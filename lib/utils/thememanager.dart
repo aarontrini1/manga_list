@@ -115,7 +115,7 @@ class ThemeManager extends ChangeNotifier {
   ThemeData getThemeData(BuildContext context) {
     switch (_currentTheme) {
       case AppTheme.system:
-        return Theme.of(context).brightness == Brightness.dark 
+        return MediaQuery.of(context).platformBrightness == Brightness.dark 
           ? darkTheme 
           : lightTheme;
       case AppTheme.light:

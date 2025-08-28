@@ -30,22 +30,16 @@ class SoloLevelingManhwa extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    
     return Scaffold(
       appBar: AppBar(
         title: const Text('Solo Leveling'),
         centerTitle: true,
       ),
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Colors.blue.shade100,
-              Colors.blue.shade900,
-            ],
-          ),
-        ),
+        color: colorScheme.surface,
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(20),
@@ -56,32 +50,32 @@ class SoloLevelingManhwa extends StatelessWidget {
                   height: 300,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    color: Colors.white.withOpacity(0.1),
+                    color: colorScheme.onSurface.withOpacity(0.1),
                   ),
-                  child: const Center(
+                  child: Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(
                           Icons.menu_book,
                           size: 100,
-                          color: Colors.white,
+                          color: colorScheme.onSurface,
                         ),
-                        SizedBox(height: 20),
+                        const SizedBox(height: 20),
                         Text(
                           'Solo Leveling',
                           style: TextStyle(
                             fontSize: 32,
                             fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                            color: colorScheme.onSurface,
                           ),
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         Text(
                           'Manhwa Series',
                           style: TextStyle(
                             fontSize: 18,
-                            color: Colors.white70,
+                            color: colorScheme.onSurface.withOpacity(0.7),
                           ),
                         ),
                       ],
@@ -94,8 +88,8 @@ class SoloLevelingManhwa extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () => _navigateToPDFViewer(context),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    foregroundColor: Colors.blue.shade800,
+                    backgroundColor: colorScheme.surface,
+                    foregroundColor: colorScheme.primary,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
@@ -117,7 +111,7 @@ class SoloLevelingManhwa extends StatelessWidget {
                 Text(
                   'Continue where you left off or start from the beginning',
                   style: TextStyle(
-                    color: Colors.white70,
+                    color: colorScheme.onSurface.withOpacity(0.7),
                     fontSize: 14,
                   ),
                   textAlign: TextAlign.center,

@@ -18,63 +18,43 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _buildHomePage(BuildContext context) {
-    return Stack(
-      children: [
-        // Gradient background
-        Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                // Light colour on top and dark on bottom
-                Colors.green.shade100,
-                const Color.fromARGB(255, 6, 132, 14),
-              ],
-            ),
-          ),
-        ),
-        // Main content
-        Center(
-          child: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    "MangaList",
-                    style: TextStyle(
-                      fontSize: 32,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 1,
-                    ),
-                  ),
-                  const SizedBox(height: 40),
-                  MangaButton(
-                    title: 'Solo Leveling',
-                    mangaKey: 'soloLeveling',
-                    onPressed: () => {_navigateToSL(context)},
-                  ),
-                ],
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    
+    return Scaffold(
+      backgroundColor: colorScheme.surface,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                "MangaList",
+                style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 1,
+                  color: colorScheme.onSurface,
+                ),
               ),
-            ),
+              const SizedBox(height: 40),
+              MangaButton(
+                title: 'Solo Leveling',
+                mangaKey: 'soloLeveling',
+                onPressed: () => {_navigateToSL(context)},
+                imagePath: 'assets/soloLeveling_manhwa_art.jpeg',
+              ),
+            ],
           ),
         ),
-
-        Positioned(
-          bottom: 20,
-          right: 20,
-          child: SafeArea(
-            child: FloatingActionButton(
-              onPressed: () => _navigateToSettings(context),
-              backgroundColor: Colors.white.withOpacity(0.9),
-              foregroundColor: const Color.fromARGB(255, 6, 132, 14),
-              child: const Icon(Icons.settings),
-            ),
-          ),
-        ),
-      ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => _navigateToSettings(context),
+        backgroundColor: colorScheme.primary,
+        foregroundColor: colorScheme.onPrimary,
+        child: const Icon(Icons.settings),
+      ),
     );
   }
 }
